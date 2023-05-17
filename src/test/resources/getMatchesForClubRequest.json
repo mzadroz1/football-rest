@@ -1,0 +1,3 @@
+{
+ "query": "{\n  matches(clubId: \"${clubId}\") {\n    matchId\n    matchDate\n    host {\n      clubId\n      name\n      shortName\n      foundingDate\n    }\n    visitor {\n      clubId\n      name\n      shortName\n      foundingDate\n    }\n    hostGoals\n    visitorGoals\n  }\n}"
+}

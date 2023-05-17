@@ -1,0 +1,3 @@
+{
+  "query": "{\n  playersStatistics {\n    player {\n      playerId\n      name\n      surname\n    }\n    matchCount\n    goalsScored\n    yellowCards\n    redCards\n  }\n}\n"
+}

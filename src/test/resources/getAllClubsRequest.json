@@ -1,0 +1,3 @@
+{
+  "query": "{ clubs { clubId name shortName foundingDate } }"
+}
