@@ -4,8 +4,10 @@ import com.cosium.spring.data.jpa.entity.graph.domain2.DynamicEntityGraph;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.pw.footballrest.dto.PlayerDto;
+import pl.pw.footballrest.dto.PlayerWithClubDto;
 import pl.pw.footballrest.dto.PlayerStatisticsDto;
 import pl.pw.footballrest.mappers.PlayerMapper;
+import pl.pw.footballrest.mappers.PlayerWithClubMapper;
 import pl.pw.footballrest.mappers.PlayerWithMatchesMapper;
 import pl.pw.footballrest.repository.PlayerRepository;
 
@@ -19,14 +21,15 @@ import java.util.stream.StreamSupport;
 public class PlayerService {
 
     private final PlayerRepository playerRepository;
+    private final PlayerWithClubMapper playerWithClubMapper;
     private final PlayerMapper playerMapper;
     private final PlayerWithMatchesMapper playerWithMatchesMapper;
 
-    public List<PlayerDto> getAllPlayers() {
+    public List<PlayerWithClubDto> getAllPlayers() {
         return StreamSupport.stream(playerRepository.findAll(DynamicEntityGraph.loading()
                         .addPath("club")
                         .build()).spliterator(), false)
-                .map(playerMapper::toDto)
+                .map(playerWithClubMapper::toDto)
                 .collect(Collectors.toList());
     }
 
@@ -36,8 +39,8 @@ public class PlayerService {
                 .collect(Collectors.toList());
     }
 
-    public PlayerDto getPlayer(Long playerId) {
-        return playerRepository.findById(playerId).map(playerMapper::toDto)
+    public PlayerWithClubDto getPlayer(Long playerId) {
+        return playerRepository.findById(playerId).map(playerWithClubMapper::toDto)
                 .orElseThrow(() -> new IllegalArgumentException("Player with specified id=" + playerId + " does not exists."));
     }
 

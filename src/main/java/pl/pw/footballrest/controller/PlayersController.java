@@ -20,7 +20,7 @@ public class PlayersController {
     private final MatchService matchService;
 
     @GetMapping
-    public List<PlayerDto> players() {
+    public List<PlayerWithClubDto> players() {
         return playerService.getAllPlayers();
     }
 
@@ -30,7 +30,7 @@ public class PlayersController {
     }
 
     @GetMapping("/{player-id}")
-    public PlayerDto player(@PathVariable("player-id") Long playerId) {
+    public PlayerWithClubDto player(@PathVariable("player-id") Long playerId) {
         return playerService.getPlayer(playerId);
     }
 

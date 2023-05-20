@@ -21,7 +21,7 @@ public class GetAllClubsGraphQL extends Simulation {
 
     {
         setUp(
-                scn.injectOpen(constantUsersPerSec(20).during(10))
+                scn.injectOpen(constantUsersPerSec(20).during(50))
         ).protocols(graphQLHttpProtocol);
     }
 }

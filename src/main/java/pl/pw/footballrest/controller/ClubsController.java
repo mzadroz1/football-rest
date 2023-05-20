@@ -5,10 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.pw.footballrest.dto.ClubDto;
-import pl.pw.footballrest.dto.MatchDto;
-import pl.pw.footballrest.dto.PlayerDto;
-import pl.pw.footballrest.dto.RankedClubDto;
+import pl.pw.footballrest.dto.*;
 import pl.pw.footballrest.service.ClubRankingService;
 import pl.pw.footballrest.service.ClubService;
 import pl.pw.footballrest.service.MatchService;
@@ -31,14 +28,14 @@ public class ClubsController {
         return clubService.getAllClubs();
     }
 
-    @GetMapping("/ranking")
-    public List<RankedClubDto> ranking() {
-        return clubRankingService.getClubsRanking2();
-    }
-
     @GetMapping("/{club-id}")
     public ClubDto club(@PathVariable("club-id") Long clubId) {
         return clubService.getClub(clubId);
+    }
+
+    @GetMapping("/ranking")
+    public List<RankedClubDto> ranking() {
+        return clubRankingService.getClubsRanking2();
     }
 
     @GetMapping("/{club-id}/matches")

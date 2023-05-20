@@ -1,14 +1,11 @@
 package pl.pw.footballrest.service;
 
 import com.cosium.spring.data.jpa.entity.graph.domain2.DynamicEntityGraph;
-import com.cosium.spring.data.jpa.entity.graph.domain2.NamedEntityGraph;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.pw.footballrest.dto.ClubDto;
 import pl.pw.footballrest.dto.ClubWithMatchesDto;
 import pl.pw.footballrest.dto.ClubWithMatchesMapper;
-import pl.pw.footballrest.dto.RankedClubDto;
-import pl.pw.footballrest.entity.Club;
 import pl.pw.footballrest.mappers.ClubMapper;
 import pl.pw.footballrest.repository.ClubRepository;
 
@@ -26,7 +23,8 @@ public class ClubService {
 
     public List<ClubDto> getAllClubs() {
         return StreamSupport.stream(clubRepository.findAll().spliterator(), false)
-                .map(clubMapper::toDto).collect(Collectors.toList());
+                .map(clubMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     public List<ClubWithMatchesDto> getAllClubsWithMatches() {

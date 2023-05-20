@@ -21,7 +21,7 @@ public class GetPlayersStatisticsGraphQL extends Simulation {
 
     {
         setUp(
-                scn.injectOpen(constantUsersPerSec(50).during(10))
+                scn.injectOpen(constantUsersPerSec(5).during(10))
         ).protocols(graphQLHttpProtocol);
     }
 }

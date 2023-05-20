@@ -18,7 +18,7 @@ public class GetPlayersStatisticsRest extends Simulation {
 
     {
         setUp(
-                scn.injectOpen(constantUsersPerSec(20).during(10))
+                scn.injectOpen(constantUsersPerSec(7).during(10))
         ).protocols(restHttpProtocol);
     }
 }

@@ -9,7 +9,7 @@ import java.time.LocalDate;
  * A DTO for the {@link pl.pw.footballrest.entity.Player} entity
  */
 @Data
-public class PlayerDto implements Serializable {
+public class PlayerWithClubDto implements Serializable {
     private final Long id;
     private final String name;
     private final String surname;
@@ -17,4 +17,5 @@ public class PlayerDto implements Serializable {
     private final LocalDate birthDate;
     private final Integer height;
     private final Integer weight;
+    private final ClubDto club;
 }
