@@ -20,11 +20,11 @@ public class TestConfiguration {
     public static final HttpProtocolBuilder graphQLHttpProtocol =
             http.baseUrl(graphQlBaseUrl);
 
-    static int totalDesiredUserCount = 100;
-    static double userRampUpPerInterval = 10;
+    static int totalDesiredUserCount = 300;
+    static double userRampUpPerInterval = 30;
     static double rampUpIntervalSeconds = 10;
     static int totalRampUptimeSeconds = 100;
-    static int steadyStateDurationSeconds = 10;
+    static int steadyStateDurationSeconds = 0;
 
     public static final OpenInjectionStep.RampRate.RampRateOpenInjectionStep rampRateOpenInjectionStep =
             rampUsersPerSec(userRampUpPerInterval / (rampUpIntervalSeconds / 60))
