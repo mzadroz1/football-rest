@@ -22,7 +22,7 @@ public class GetMatchesForClubRest extends Simulation {
 
     {
         setUp(
-                scn.injectOpen(constantUsersPerSec(1).during(10))
+                scn.injectOpen(constantUsersPerSec(20).during(50))
         ).protocols(restHttpProtocol);
     }
 }

@@ -1,0 +1,3 @@
+{
+  "query": "{ club(id: \"${clubId}\") { players {\n name\n surname\n playerStatistics {\n     goalsScored\n     matchCount\n     yellowCards\n     redCards\n }\n    } } }"
+}

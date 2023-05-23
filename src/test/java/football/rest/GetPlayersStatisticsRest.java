@@ -4,8 +4,10 @@ import io.gatling.javaapi.core.ChainBuilder;
 import io.gatling.javaapi.core.ScenarioBuilder;
 import io.gatling.javaapi.core.Simulation;
 
+import static football.TestConfiguration.rampRateOpenInjectionStep;
 import static football.TestConfiguration.restHttpProtocol;
-import static io.gatling.javaapi.core.CoreDsl.*;
+import static io.gatling.javaapi.core.CoreDsl.exec;
+import static io.gatling.javaapi.core.CoreDsl.scenario;
 import static io.gatling.javaapi.http.HttpDsl.http;
 
 public class GetPlayersStatisticsRest extends Simulation {
@@ -18,7 +20,9 @@ public class GetPlayersStatisticsRest extends Simulation {
 
     {
         setUp(
-                scn.injectOpen(constantUsersPerSec(7).during(10))
+                scn.injectOpen(
+                        rampRateOpenInjectionStep
+                )
         ).protocols(restHttpProtocol);
     }
 }
