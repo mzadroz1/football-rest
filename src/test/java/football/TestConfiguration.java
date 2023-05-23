@@ -10,7 +10,7 @@ import static io.gatling.javaapi.http.HttpDsl.http;
 public class TestConfiguration {
 
 //    public static final String URL = "http://localhost";
-    public static final String URL = "http://ec2-3-88-21-180.compute-1.amazonaws.com";
+    public static final String URL = "http://ec2-52-91-14-160.compute-1.amazonaws.com";
     public static final String restBaseUrl = URL + ":8888/football";
     public static final String graphQlBaseUrl = URL + ":8080/graphql";
 
@@ -20,11 +20,11 @@ public class TestConfiguration {
     public static final HttpProtocolBuilder graphQLHttpProtocol =
             http.baseUrl(graphQlBaseUrl);
 
-    static int totalDesiredUserCount = 500;
-    static double userRampUpPerInterval = 50;
+    static int totalDesiredUserCount = 100;
+    static double userRampUpPerInterval = 10;
     static double rampUpIntervalSeconds = 10;
     static int totalRampUptimeSeconds = 100;
-    static int steadyStateDurationSeconds = 30;
+    static int steadyStateDurationSeconds = 10;
 
     public static final OpenInjectionStep.RampRate.RampRateOpenInjectionStep rampRateOpenInjectionStep =
             rampUsersPerSec(userRampUpPerInterval / (rampUpIntervalSeconds / 60))

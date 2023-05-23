@@ -47,4 +47,9 @@ public class ClubsController {
     public List<PlayerDto> players(@PathVariable("club-id") Long clubId) {
         return playerService.getAllPlayersFromClub(clubId);
     }
+
+    @GetMapping("/{club-id}/players/statistics")
+    public List<PlayerStatisticsDto> playersStatistics(@PathVariable("club-id") Long clubId) {
+        return playerService.getPlayersStatistics(clubId);
+    }
 }

@@ -64,4 +64,14 @@ public class PlayerService {
                 .map(PlayerStatisticsDto::from)
                 .orElseThrow(() -> new IllegalArgumentException("Player with specified id=" + playerId + " does not exists."));
     }
+
+    public List<PlayerStatisticsDto> getPlayersStatistics(Long clubId) {
+        return playerRepository.findByClub_Id(clubId,
+                        DynamicEntityGraph.loading()
+                                .addPath("playerMatches")
+                                .build()).stream()
+                .map(playerWithMatchesMapper::toDto)
+                .map(PlayerStatisticsDto::from)
+                .collect(Collectors.toList());
+    }
 }
